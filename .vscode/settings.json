@@ -1,0 +1,21 @@
+{
+    "sqltools.connections": [
+        {
+            "oracleOptions": {
+                "privilege": "Normal",
+                "thickMode": true,
+                "autoCommit": true,
+                "lowerCase": true,
+                "limitPrefetchRows": false
+            },
+            "previewLimit": 50,
+            "server": "localhost",
+            "port": 1521,
+            "driver": "Oracle",
+            "name": "test",
+            "database": "tp2_exercice1",
+            "username": "slim",
+            "password": ""
+        }
+    ]
+}
