@@ -16,6 +16,9 @@ class DragSplashScreenState extends State<DragIntroWidget> {
 
   @override
   Widget build(BuildContext context) {
+    final double height = MediaQuery.of(context).size.height;
+    final double width = MediaQuery.of(context).size.width;
+
     return Scaffold(
       body: Stack(
         children: [
@@ -41,18 +44,17 @@ class DragSplashScreenState extends State<DragIntroWidget> {
               clipper: CurvedClipper(),
               child: Container(
                 color: zoneColors[currentZone],
-                height: MediaQuery.of(context).size.height * 0.6,
-                child: buildPurpleZoneContent(),
+                height: height * 0.6, // Adjust height for mobile
+                child: buildPurpleZoneContent(width, height),
               ),
             ),
           ),
-        
         ],
       ),
     );
   }
 
-  Widget buildPurpleZoneContent() {
+  Widget buildPurpleZoneContent(double width, double height) {
     List<String> descriptions = [
       "Discover the world of Science, Technology, Engineering, and Math through fun and interactive challenges designed just for kids.",
       "Dive into exciting activities that make learning engaging. Experiment, build, and solve problems while having fun!",
@@ -68,22 +70,22 @@ class DragSplashScreenState extends State<DragIntroWidget> {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Image.asset(imagePaths[currentZone], height: 200),
-        const SizedBox(height: 1),
+        Image.asset(imagePaths[currentZone], height: height * 0.25),  // Adjust image size based on screen height
+        const SizedBox(height: 8),
         Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 100.0),
+          padding: EdgeInsets.symmetric(horizontal: width * 0.1), // Adjust padding based on screen width
           child: Text(
             descriptions[currentZone],
             textAlign: TextAlign.center,
-            style: const TextStyle(
+            style: TextStyle(
               fontFamily: 'sparkFont',
-              fontSize: 30,
+              fontSize: width * 0.05,  // Adjust font size based on screen width
               color: Colors.black,
               fontWeight: FontWeight.w400,
             ),
           ),
         ),
-       const  SizedBox(height: 30),
+        const SizedBox(height: 20),
         // Page Indicator for the purple zone
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -100,7 +102,7 @@ class DragSplashScreenState extends State<DragIntroWidget> {
               ),
           ],
         ),
-         const  SizedBox(height: 50),
+        const SizedBox(height: 30),
       ],
     );
   }

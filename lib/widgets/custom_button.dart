@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:spark/widgets/background_music.dart';
 
-
-
+// GoogleButton
 class GoogleButton extends StatelessWidget {
   final VoidCallback onPressed;
 
-  const GoogleButton({super.key,required this.onPressed});
+  const GoogleButton({super.key, required this.onPressed});
 
   @override
   Widget build(BuildContext context) {
+    final double width = MediaQuery.of(context).size.width;
+
     return ElevatedButton(
       onPressed: onPressed,
       style: ElevatedButton.styleFrom(
@@ -17,19 +18,17 @@ class GoogleButton extends StatelessWidget {
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(15),
         ),
-        padding: const EdgeInsets.symmetric(vertical: 25, horizontal: 332),
-        elevation: 2,
+        padding: EdgeInsets.symmetric(vertical: 25, horizontal: width * 0.175 ), // Adjusted padding
+        elevation: 4,
       ),
       child: Row(
-        mainAxisSize: MainAxisSize.min,  // Compactly wrap around children
-        crossAxisAlignment: CrossAxisAlignment.center,  // Vertically center children
-        textDirection: TextDirection.ltr,  // Set left-to-right text direction
+        mainAxisSize: MainAxisSize.min,
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Image.asset(
-            'assets/google_icon.png',  // Ensure this path is correct
-            height: 40,
+            'assets/google_icon.png', // Ensure this path is correct
+            height: width * 0.05  , // Adjusted icon size
           ),
-          const SizedBox(width: 12),  // Space between icon and text
           
         ],
       ),
@@ -37,7 +36,7 @@ class GoogleButton extends StatelessWidget {
   }
 }
 
-
+// SettingsButton
 class SettingsButton extends StatelessWidget {
   final VoidCallback onPressed;
   final double vertical;
@@ -45,10 +44,19 @@ class SettingsButton extends StatelessWidget {
   final String? imgPath;
   final double imgHeight;
 
-  const SettingsButton({Key?key,required this.onPressed,required this.imgHeight,required this.imgPath,required this.vertical,required this.horizontal}): super(key: key); 
+  const SettingsButton({
+    Key? key,
+    required this.onPressed,
+    required this.imgHeight,
+    required this.imgPath,
+    required this.vertical,
+    required this.horizontal,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+   
+
     return ElevatedButton(
       onPressed: onPressed,
       style: ElevatedButton.styleFrom(
@@ -56,28 +64,25 @@ class SettingsButton extends StatelessWidget {
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(100),
         ),
-        padding:  EdgeInsets.symmetric(vertical: vertical, horizontal: horizontal),
+        padding: EdgeInsets.symmetric(vertical: vertical, horizontal: horizontal),
         elevation: 0,
       ),
       child: Row(
-        mainAxisSize: MainAxisSize.min,  // Compactly wrap around children
-        crossAxisAlignment: CrossAxisAlignment.center,  // Vertically center children
-        textDirection: TextDirection.ltr,  // Set left-to-right text direction
+        mainAxisSize: MainAxisSize.min,
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Image.asset(
-            '$imgPath',  // Ensure this path is correct
+            '$imgPath', // Ensure this path is correct
             height: imgHeight,
           ),
-          const SizedBox(width: 12),  // Space between icon and text
-          
+          const SizedBox(width: 12),
         ],
       ),
     );
   }
 }
 
-
-
+// MuteButton
 class MuteButton extends StatefulWidget {
   final double vertical;
   final double horizontal;
@@ -106,12 +111,14 @@ class MuteButtonState extends State<MuteButton> {
       BackgroundMusicService().play();
     }
     setState(() {
-      isPlaying = !isPlaying; // Toggle the playing state
+      isPlaying = !isPlaying;
     });
   }
 
   @override
   Widget build(BuildContext context) {
+  
+
     return ElevatedButton(
       onPressed: toggleMusic,
       style: ElevatedButton.styleFrom(
@@ -119,29 +126,25 @@ class MuteButtonState extends State<MuteButton> {
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(100),
         ),
-        padding: EdgeInsets.symmetric(
-          vertical: widget.vertical,
-          horizontal: widget.horizontal,
-        ),
+        padding: EdgeInsets.symmetric(vertical: widget.vertical, horizontal: widget.horizontal),
         elevation: 0,
       ),
       child: Row(
-        mainAxisSize: MainAxisSize.min,  // Compactly wrap around children
-        crossAxisAlignment: CrossAxisAlignment.center,  // Vertically center children
+        mainAxisSize: MainAxisSize.min,
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Image.asset(
             widget.imgPath!,  // Ensure this path is correct
             height: widget.imgHeight,
           ),
-          const SizedBox(width: 12),  // Space between icon and text
+          const SizedBox(width: 12),
         ],
       ),
     );
   }
 }
 
-
-
+// IntroButton (Main Button for Signup/Login)
 class IntroButton extends StatelessWidget {
   final String text;
   final VoidCallback onPressed;
@@ -158,16 +161,18 @@ class IntroButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final double width = MediaQuery.of(context).size.width;
+
     return SizedBox(
-      width: double.infinity,
-      height: 100, // Set your desired height
+      width: width * 0.8,  // Set width to 80% of screen width
+      height: 70,  // Adjusted height for mobile
       child: ElevatedButton(
         style: ElevatedButton.styleFrom(
           backgroundColor: color,
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(15), // Adjust as needed
+            borderRadius: BorderRadius.circular(15),
           ),
-          padding: const EdgeInsets.symmetric(vertical: 12 ),
+          padding: const EdgeInsets.symmetric(vertical: 12),
         ),
         onPressed: onPressed,
         child: Text(
@@ -175,7 +180,7 @@ class IntroButton extends StatelessWidget {
           style: TextStyle(
             fontFamily: 'sparkFont',
             color: textColor,
-            fontSize: 50, // Adjust font size as needed
+            fontSize: width * 0.05,  // Adjust font size based on screen width
             fontWeight: FontWeight.w400,
           ),
         ),
@@ -183,18 +188,24 @@ class IntroButton extends StatelessWidget {
     );
   }
 }
+
+// BackButton
 class BackButton extends StatelessWidget {
   const BackButton({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final double width = MediaQuery.of(context).size.width;
+
     return IconButton(
       icon: const Icon(Icons.arrow_back_ios),
-      onPressed: (){Navigator.pop(context);},
+      onPressed: () {
+        Navigator.pop(context);
+      },
+      iconSize: width * 0.08, // Adjust icon size based on screen width
     );
   }
 }
-
 class DateButton extends StatefulWidget {
   final String date;
   final double? hwidth;
@@ -218,33 +229,108 @@ class DateButtonState extends State<DateButton> {
 
   @override
   Widget build(BuildContext context) {
-    return TextButton(
-      onPressed: _toggleBorderColor,
-      style: TextButton.styleFrom(
-        padding: EdgeInsets.symmetric(vertical: widget.vheight ?? 8.0, horizontal: widget.hwidth ?? 16.0),
-        side: BorderSide(color: borderColor, width: 2),
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
-      ),
-      child: Text(
-        widget.date,
-        style: const TextStyle(color: Colors.black, fontSize: 30),
+    final double width = MediaQuery.of(context).size.width;
+
+    // Use a percentage of screen width for width and height, rather than static values
+    double buttonWidth = widget.hwidth ?? width * 0.4; // Adjust width to fit the text better
+    double buttonHeight = widget.vheight ?? width * 0.12; // Adjust height proportionally
+
+    return Container(
+      width: buttonWidth, // Set container width for flexible width
+      height: buttonHeight, // Set container height for flexible height
+      child: TextButton(
+        onPressed: _toggleBorderColor,
+        style: TextButton.styleFrom(
+          padding: EdgeInsets.symmetric(vertical: buttonHeight * 0.3, horizontal: buttonWidth * 0.1),
+          side: BorderSide(color: borderColor, width: 2),
+          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+        ),
+        child: Text(
+          widget.date,
+          style: TextStyle(
+            color: Colors.black,
+            fontSize: width * 0.05, // Scaled font size for better fit
+            fontWeight: FontWeight.bold, // Make the font weight bold for clarity
+          ),
+        ),
       ),
     );
   }
 }
 
-class NextButton extends StatelessWidget {
 
+
+// NextButton (Skip Button)
+class NextButton extends StatelessWidget {
   const NextButton({super.key});
+
   @override
-  Widget build(BuildContext context){
-    return(TextButton(
-      onPressed: (){Navigator.pop(context);}, 
-      child:const Text("Skip",style: TextStyle(
-                  fontFamily: 'sparkFont',
-                  color: Colors.white,
-                  fontSize: 35,
-                  fontWeight: FontWeight.w400,
-                ),)));
+  Widget build(BuildContext context) {
+    final double width = MediaQuery.of(context).size.width;
+
+    return TextButton(
+      onPressed: () {
+        Navigator.pop(context);
+      },
+      child: Text(
+        "Skip",
+        style: TextStyle(
+          fontFamily: 'sparkFont',
+          color: Colors.white,
+          fontSize: width * 0.08, // Adjust font size
+          fontWeight: FontWeight.w400,
+        ),
+      ),
+    );
+  }
+}
+
+class PlanetButton extends StatelessWidget {
+  final VoidCallback onPressed;
+  final String imagePath; // Image path parameter
+  final String buttonText; // Text to display below the image
+
+  const PlanetButton({
+    super.key,
+    required this.onPressed,
+    required this.imagePath,
+    required this.buttonText,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    final double width = MediaQuery.of(context).size.width;
+
+    return ElevatedButton(
+      onPressed: onPressed,
+      style: ElevatedButton.styleFrom(
+        backgroundColor: Colors.transparent, // Transparent background
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(15),
+        ),
+        padding: EdgeInsets.symmetric(vertical: 20, horizontal: width * 0.175), // Adjusted padding
+        elevation: 0, // Set elevation to 0 to remove shadow
+      ),
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          Image.asset(
+            imagePath, // Image path (ensure the path is correct)
+            height: width * 0.09, // Adjust image size
+          ),
+          const SizedBox(height: 8), // Space between image and text
+          Text(
+            buttonText, // Button text
+            style: TextStyle(
+              fontFamily: 'sparkFont',
+              color: const Color.fromARGB(255, 255, 255, 255), // Text color
+              fontSize: width * 0.02, // Font size adjusted based on screen width
+              fontWeight: FontWeight.w400,
+            ),
+          ),
+        ],
+      ),
+    );
   }
 }

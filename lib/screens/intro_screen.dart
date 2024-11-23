@@ -4,12 +4,14 @@ import 'package:spark/widgets/drag_intro_widget.dart';
 import 'package:spark/helpers/theme.dart';
 import 'package:spark/widgets/custom_button.dart';
 import 'package:spark/widgets/login.dart';
-
 class IntroScreen extends StatelessWidget {
   const IntroScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final double width = MediaQuery.of(context).size.width;
+    final double height = MediaQuery.of(context).size.height;
+
     return Scaffold(
       body: Stack(
         children: [
@@ -17,13 +19,13 @@ class IntroScreen extends StatelessWidget {
           Positioned(
             left: 0,
             right: 0,
-            bottom: MediaQuery.of(context).size.height * 0.1,
+            bottom: height * 0.1,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 Container(
-                  margin: const EdgeInsets.symmetric(horizontal: 50.0), // Add horizontal margin
+                  margin: EdgeInsets.symmetric(horizontal: width * 0.1), // Adjusted margin for mobile
                   child: IntroButton(
                     text: "I'm a New User",
                     onPressed: () {
@@ -36,9 +38,9 @@ class IntroScreen extends StatelessWidget {
                     textColor: Colors.white,
                   ),
                 ),
-                const SizedBox(height: 20),
+                SizedBox(height: height * 0.02), // Adjusted space for mobile
                 Container(
-                  margin: const EdgeInsets.symmetric(horizontal: 50.0), // Add horizontal margin
+                  margin: EdgeInsets.symmetric(horizontal: width * 0.1), // Adjusted margin for mobile
                   child: IntroButton(
                     text: "Already Have an Account",
                     onPressed: () {

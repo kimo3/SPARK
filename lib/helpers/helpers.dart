@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:spark/screens/terms_and_conditions.dart';
 import 'dart:math' as math;
+import 'dart:async';
+import 'package:video_player/video_player.dart';
+import 'package:flutter_pdfview/flutter_pdfview.dart';
+
 class CurvedTextButton extends StatelessWidget {
   final double radius;
   final String text;
@@ -174,10 +178,128 @@ class TermsCheckboxState extends State<TermsCheckbox> {
                         },
                         child: const Text(
                           'Accept terms and conditions',
-                          style: TextStyle(fontSize: 30,fontFamily: 'sparkFont', decoration: TextDecoration.underline,),
+                          style: TextStyle(fontSize: 12,fontFamily: 'sparkFont', decoration: TextDecoration.underline,),
                         ),
                       ),
       ],
+    );
+  }
+}
+
+
+class VideoAndPDFWidget extends StatefulWidget {
+  final String videoPath;
+  final String pdfPath;
+
+  const VideoAndPDFWidget({
+    super.key,
+    required this.videoPath, // Path to the video file
+    required this.pdfPath,   // Path to the PDF file
+  });
+
+  @override
+  VideoAndPDFWidgetState createState() => VideoAndPDFWidgetState();
+}
+
+class VideoAndPDFWidgetState extends State<VideoAndPDFWidget> {
+  late VideoPlayerController _videoController;
+  final PageController _pageController = PageController();
+  Timer? _timer;
+  bool _videoFinished = false;
+
+  @override
+  void initState() {
+    super.initState();
+    _initializeVideo();
+  }
+
+  // Initialize the video player
+  void _initializeVideo() {
+    _videoController = VideoPlayerController.asset(widget.videoPath)
+      ..initialize().then((_) {
+        setState(() {});
+        _videoController.play(); // Automatically start playing the video
+      }).catchError((e) {
+        debugPrint('Error initializing video player: $e');
+      });
+
+    // Ensure the video doesn't loop
+    _videoController.setLooping(false);
+
+    // Listener for when the video finishes
+    _videoController.addListener(() {
+      if (_videoController.value.isInitialized &&
+          _videoController.value.position == _videoController.value.duration &&
+          !_videoFinished) {
+        setState(() {
+          _videoFinished = true;
+        });
+        _startAutoScroll(); // Start the auto-scroll as soon as the video finishes
+      }
+    });
+  }
+
+  // Auto-scroll for PDF pages
+  void _startAutoScroll() {
+    _timer = Timer.periodic(const Duration(seconds: 4), (timer) {
+      try {
+        if (_pageController.hasClients && _pageController.page != null) {
+          int nextPage = _pageController.page!.round() + 1;
+
+          // Replace "5" with the total number of pages if known
+          if (nextPage == 5) {
+            _timer?.cancel();
+            Navigator.pop(context); // Navigate or do something after PDF finishes
+          } else {
+            _pageController.animateToPage(
+              nextPage,
+              duration: const Duration(milliseconds: 500),
+              curve: Curves.easeIn,
+            );
+          }
+        }
+      } catch (e) {
+        debugPrint('Error during auto-scroll: $e');
+        _timer?.cancel();
+      }
+    });
+  }
+
+  @override
+  void dispose() {
+    _timer?.cancel();
+    _videoController.dispose();
+    _pageController.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: _videoFinished
+          ? PDFView(
+              filePath: widget.pdfPath, // Display the PDF viewer when video ends
+              onRender: (pages) {
+                debugPrint('Total pages: $pages');
+              },
+              onError: (error) {
+                debugPrint('Error rendering PDF: $error');
+              },
+              onPageError: (page, error) {
+                debugPrint('Error on page $page: $error');
+              },
+              pageSnap: true, // Optional: Enables snapping to pages
+              swipeHorizontal: false,
+              fitPolicy: FitPolicy.BOTH,
+            )
+          : Center(
+              child: _videoController.value.isInitialized
+                  ? AspectRatio(
+                      aspectRatio: _videoController.value.aspectRatio,
+                      child: VideoPlayer(_videoController),
+                    )
+                  : const CircularProgressIndicator(),
+            ),
     );
   }
 }
