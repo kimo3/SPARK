@@ -19,12 +19,12 @@ class ArchiTechState extends State<ArchiTech> {
     SystemChrome.setPreferredOrientations([DeviceOrientation.landscapeRight, DeviceOrientation.landscapeLeft]);
   }
 
-  @override
-  void dispose() {
-    super.dispose();
-    // Reset orientation when this screen is disposed
-    SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
-  }
+  // @override
+  // void dispose() {
+  //   super.dispose();
+  //   // Reset orientation when this screen is disposed
+  //   SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
+  // }
 
   @override
   Widget build(BuildContext context) {

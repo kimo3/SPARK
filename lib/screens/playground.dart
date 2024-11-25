@@ -18,6 +18,12 @@ class PlaygroundScreen extends StatefulWidget {
 }
 
 class PlaygroundScreenState extends State<PlaygroundScreen> {
+   @override
+  void initState() {
+    super.initState();
+    // Force landscape mode when this screen is displayed
+    SystemChrome.setPreferredOrientations([DeviceOrientation.landscapeRight, DeviceOrientation.landscapeLeft]);
+  }
   
 
   @override
