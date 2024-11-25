@@ -11,20 +11,7 @@ class HomeScreen extends StatefulWidget {
 }
 
 class HomeState extends State<HomeScreen> {
-  @override
-  void initState() {
-    super.initState();
-    // Force landscape mode when this screen is displayed
-    SystemChrome.setPreferredOrientations([DeviceOrientation.landscapeRight, DeviceOrientation.landscapeLeft]);
-  }
-
-  @override
-  void dispose() {
-    super.dispose();
-    // Reset orientation when this screen is disposed
-    
-  }
-
+  
   @override
   Widget build(BuildContext context) {
 

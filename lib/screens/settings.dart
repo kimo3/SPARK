@@ -12,19 +12,7 @@ class Settings extends StatefulWidget {
 }
 
 class SettingsState extends State<Settings> {
-  @override
-  void initState() {
-    super.initState();
-    // Force landscape mode when this screen is displayed
-    SystemChrome.setPreferredOrientations([DeviceOrientation.landscapeRight, DeviceOrientation.landscapeLeft]);
-  }
-
-  @override
-  void dispose() {
-    super.dispose();
-    // Reset orientation when this screen is disposed
-    SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
-  }
+ 
 
   @override
   Widget build(BuildContext context) {

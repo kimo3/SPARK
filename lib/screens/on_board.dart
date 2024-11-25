@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:spark/screens/intro_screen.dart';
+import 'package:spark/screens/home_screen.dart';
+
 
 
 
@@ -22,7 +23,7 @@ class _OnBoardScreenState extends State<OnBoardScreen> with SingleTickerProvider
     super.initState(); 
     SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersive);
     Future.delayed(const Duration(seconds:4),(){
-      Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context)=> const IntroScreen() ));
+      Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context)=> const HomeScreen() ));
       
       });
   }

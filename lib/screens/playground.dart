@@ -14,19 +14,11 @@ class PlaygroundScreen extends StatefulWidget {
   const PlaygroundScreen({Key? key}) : super(key: key);
 
   @override
-  HomeState createState() => HomeState();
+  PlaygroundScreenState createState() => PlaygroundScreenState();
 }
 
-class HomeState extends State<PlaygroundScreen> {
-  @override
-  void initState() {
-    super.initState();
-    // Lock orientation to landscape
-    SystemChrome.setPreferredOrientations([
-      DeviceOrientation.landscapeRight,
-      DeviceOrientation.landscapeLeft,
-    ]);
-  }
+class PlaygroundScreenState extends State<PlaygroundScreen> {
+  
 
   @override
   Widget build(BuildContext context) {
