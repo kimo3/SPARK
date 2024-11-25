@@ -22,8 +22,8 @@ class PlaygroundScreenState extends State<PlaygroundScreen> {
   void initState() {
     super.initState();
     // Force landscape mode when this screen is displayed
-    SystemChrome.setPreferredOrientations([DeviceOrientation.landscapeRight, DeviceOrientation.landscapeLeft]);
-  }
+  //   SystemChrome.setPreferredOrientations([DeviceOrientation.landscapeRight, DeviceOrientation.landscapeLeft]);
+   }
   
 
   @override
