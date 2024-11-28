@@ -2,6 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:spark/screens/on_board.dart';
 import 'package:spark/widgets/background_music.dart';
+import 'dart:async';
+import 'dart:io';
+import 'package:dio/dio.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_pdfview/flutter_pdfview.dart';
+import 'package:path_provider/path_provider.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -29,3 +35,4 @@ class Spark extends StatelessWidget {
     );
   }
 }
+

@@ -84,21 +84,23 @@ class SettingsButton extends StatelessWidget {
 
 // MuteButton
 class MuteButton extends StatefulWidget {
-  final double vertical;
-  final double horizontal;
-  final String? imgPath;
-  final double imgHeight;
+  final String playIconPath;   // Icon for playing (unmuted) state
+  final String pauseIconPath;  // Icon for paused (muted) state
+  final double vertical;       // Vertical padding
+  final double horizontal;     // Horizontal padding
+  final double imgHeight;      // Height of the icon
 
   const MuteButton({
-    super.key,
-    required this.imgHeight,
-    required this.imgPath,
+    Key? key,
+    required this.playIconPath,
+    required this.pauseIconPath,
     required this.vertical,
     required this.horizontal,
-  });
+    required this.imgHeight,
+  }) : super(key: key);
 
   @override
-  MuteButtonState createState() => MuteButtonState();
+  State<MuteButton> createState() => MuteButtonState();
 }
 
 class MuteButtonState extends State<MuteButton> {
@@ -106,19 +108,17 @@ class MuteButtonState extends State<MuteButton> {
 
   void toggleMusic() {
     if (isPlaying) {
-      BackgroundMusicService().pause();
+      BackgroundMusicService().pause(); // Pause the music
     } else {
-      BackgroundMusicService().play();
+      BackgroundMusicService().play(); // Play the music
     }
     setState(() {
-      isPlaying = !isPlaying;
+      isPlaying = !isPlaying; // Toggle the state
     });
   }
 
   @override
   Widget build(BuildContext context) {
-  
-
     return ElevatedButton(
       onPressed: toggleMusic,
       style: ElevatedButton.styleFrom(
@@ -126,7 +126,10 @@ class MuteButtonState extends State<MuteButton> {
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(100),
         ),
-        padding: EdgeInsets.symmetric(vertical: widget.vertical, horizontal: widget.horizontal),
+        padding: EdgeInsets.symmetric(
+          vertical: widget.vertical,
+          horizontal: widget.horizontal,
+        ),
         elevation: 0,
       ),
       child: Row(
@@ -134,10 +137,10 @@ class MuteButtonState extends State<MuteButton> {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Image.asset(
-            widget.imgPath!,  // Ensure this path is correct
+            isPlaying ? widget.playIconPath : widget.pauseIconPath, // Switch icon based on state
             height: widget.imgHeight,
           ),
-          const SizedBox(width: 12),
+          const SizedBox(width: 12),  // Corrected to SizedBox
         ],
       ),
     );

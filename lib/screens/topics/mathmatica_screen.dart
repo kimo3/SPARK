@@ -77,7 +77,7 @@ class MathMaticaState extends State<MathMatica> {
                         context,
                         MaterialPageRoute(
                           builder: (context) => const PdfViewerScreen(
-                            pdfPath: 'assets/math.pdf',
+                            pdfUrl: 'https://drive.google.com/uc?export=download&id=1MLsAhMf-jkrwElXZ0dah-9Xpmev1_NEj',
                           ),
                         ),
                       );

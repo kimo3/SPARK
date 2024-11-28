@@ -69,7 +69,22 @@ class CodeVerseState extends State<CodeVerse> {
                     imagePath: 'assets/play_video.png',
                     backgroundColor: const Color(0xff72ddf7),
                   ),
-
+CustomCard(
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const PdfViewerScreen(
+                            pdfUrl: 'https://drive.google.com/uc?export=download&id=1Aqm4BwEETKSFpJCriU3-JgIUZ6eF15s_',
+                          ),
+                        ),
+                      );
+                    },
+                    text: 'Lesson 2',
+                    textColor: Colors.white,
+                    imagePath: 'assets/lesson.png',
+                    backgroundColor: const Color(0xffa8e6cf ),
+                  ),
                   // Success Story Card - Opens a PDF
                   CustomCard(
                     onPressed: () {
@@ -77,7 +92,7 @@ class CodeVerseState extends State<CodeVerse> {
                         context,
                         MaterialPageRoute(
                           builder: (context) => const PdfViewerScreen(
-                            pdfPath: 'assets/codeverse.pdf',
+                            pdfUrl: 'https://drive.google.com/uc?export=download&id=1eBUsIDU0ZLBEBQllYzgqDnG1xAZntdkz',
                           ),
                         ),
                       );

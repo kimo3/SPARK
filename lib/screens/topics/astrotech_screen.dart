@@ -69,7 +69,23 @@ class AstrotechState extends State<Astrotech> {
                     imagePath: 'assets/play_video.png',
                     backgroundColor: const Color(0xff72ddf7),
                   ),
-
+                  
+                   CustomCard(
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const PdfViewerScreen(
+                            pdfUrl: 'https://drive.google.com/uc?export=download&id=1QptX5G2UwMOcJuJ1v98Yp7aY7CgKg8K4',
+                          ),
+                        ),
+                      );
+                    },
+                    text: 'Lesson 2',
+                    textColor: Colors.white,
+                    imagePath: 'assets/lesson.png',
+                    backgroundColor: const Color(0xffa8e6cf ),
+                  ),
                   // Success Story Card - Opens a PDF
                   CustomCard(
                     onPressed: () {
@@ -77,7 +93,7 @@ class AstrotechState extends State<Astrotech> {
                         context,
                         MaterialPageRoute(
                           builder: (context) => const PdfViewerScreen(
-                            pdfPath: 'assets/astro.pdf',
+                            pdfUrl: 'https://drive.google.com/uc?export=download&id=1cmorivT0LUCTzCdXYBgaBIIml67cloAZ',
                           ),
                         ),
                       );

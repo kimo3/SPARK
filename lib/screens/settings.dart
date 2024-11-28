@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart'; // Import this for controlling orientation
 import 'package:spark/screens/intro_screen.dart';
 import 'package:spark/widgets/custom_button.dart';
 import 'package:spark/widgets/planets_widget.dart';
@@ -32,7 +31,7 @@ class SettingsState extends State<Settings> {
             left: 50,
             child: Column(
               children: [
-                MuteButton(imgHeight: 50, imgPath: 'assets/mute.png', vertical: 25, horizontal: 25),
+                MuteButton(imgHeight: 50,pauseIconPath: 'assets/mute.png', playIconPath: 'assets/unmute.png', vertical: 25, horizontal: 25),
                 Text(
                   'Mute Music',
                   style: TextStyle(
@@ -83,11 +82,11 @@ class SettingsState extends State<Settings> {
                   onPressed: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => const IntroScreen()),
+                      MaterialPageRoute(builder: (context) =>  const IntroScreen()),
                     );
                   },
                   imgHeight: 50,
-                  imgPath: 'assets/log_out.png',
+                  imgPath: 'assets/parental_control.png',
                   vertical: 25,
                   horizontal: 25,
                 ),

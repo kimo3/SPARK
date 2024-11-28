@@ -77,7 +77,7 @@ class EcoZoneState extends State<EcoZone> {
                         context,
                         MaterialPageRoute(
                           builder: (context) => const PdfViewerScreen(
-                            pdfPath: 'assets/ecozone.pdf',
+                            pdfUrl: 'https://drive.google.com/uc?export=download&id=1rkZdRSe1eUv_JtHNrzTDNdcJQ8sxFsMv',
                           ),
                         ),
                       );

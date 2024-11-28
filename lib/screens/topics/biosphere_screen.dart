@@ -77,7 +77,7 @@ class BioSphereState extends State<BioSphere> {
                         context,
                         MaterialPageRoute(
                           builder: (context) => const PdfViewerScreen(
-                            pdfPath: 'assets/bio.pdf',
+                            pdfUrl: 'https://drive.google.com/uc?export=download&id=1GqDg41gISWa0o9Phyz6DeiT1FEeqXmCv',
                           ),
                         ),
                       );

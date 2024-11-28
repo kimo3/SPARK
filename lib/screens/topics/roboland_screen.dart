@@ -77,7 +77,7 @@ class RoboLandState extends State<RoboLand> {
                         context,
                         MaterialPageRoute(
                           builder: (context) => const PdfViewerScreen(
-                            pdfPath: 'assets/roboland.pdf',
+                            pdfUrl: 'https://drive.google.com/file/d/1OVPiELDLO0fZAdMtNtM_wZ0KGDIo_TFv/view?usp=drive_link',
                           ),
                         ),
                       );

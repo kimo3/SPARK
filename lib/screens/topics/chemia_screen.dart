@@ -69,7 +69,22 @@ class ChemiaState extends State<Chemia> {
                     imagePath: 'assets/play_video.png',
                     backgroundColor: const Color(0xff72ddf7),
                   ),
-
+      CustomCard(
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const PdfViewerScreen(
+                            pdfUrl: 'https://drive.google.com/uc?export=download&id=1kkGR50PMLeh7tc9QZXY3C4tLvw8LT7Yg',
+                          ),
+                        ),
+                      );
+                    },
+                    text: 'Lesson 2',
+                    textColor: Colors.white,
+                    imagePath: 'assets/lesson.png',
+                    backgroundColor: const Color(0xffa8e6cf ),
+                  ),
                   // Success Story Card - Opens a PDF
                   CustomCard(
                     onPressed: () {
@@ -77,7 +92,7 @@ class ChemiaState extends State<Chemia> {
                         context,
                         MaterialPageRoute(
                           builder: (context) => const PdfViewerScreen(
-                            pdfPath: 'assets/chemia.pdf',
+                            pdfUrl: 'https://drive.google.com/file/d/1UA6f0wVvk2PdA46AHZSOtYV6MvFsJfWc/view?usp=drive_link',
                           ),
                         ),
                       );
