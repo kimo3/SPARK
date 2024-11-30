@@ -168,7 +168,7 @@ class IntroButton extends StatelessWidget {
 
     return SizedBox(
       width: width * 0.8,  // Set width to 80% of screen width
-      height: 70,  // Adjusted height for mobile
+      height: 50,  // Adjusted height for mobile
       child: ElevatedButton(
         style: ElevatedButton.styleFrom(
           backgroundColor: color,
@@ -183,7 +183,7 @@ class IntroButton extends StatelessWidget {
           style: TextStyle(
             fontFamily: 'sparkFont',
             color: textColor,
-            fontSize: width * 0.05,  // Adjust font size based on screen width
+            fontSize: width * 0.02,  // Adjust font size based on screen width
             fontWeight: FontWeight.w400,
           ),
         ),

@@ -32,3 +32,7 @@ flutter:
     - family: sparkFont  
       fonts:
         - asset: assets/BalooBhaijaan2-VariableFont_wght.ttf  
+    - family: chalk  
+      fonts:
+        - asset: assets/Chalk_Regular.ttf  
+        

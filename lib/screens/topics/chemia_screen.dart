@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:spark/screens/topics/chemia_challenge_intro.dart';
+import 'package:spark/screens/topics/equation_challenge_screen.dart';
 import 'package:spark/widgets/card.dart';
 import 'package:spark/widgets/pdf_view_screen.dart';
 import 'package:spark/widgets/video_player_screen.dart';
@@ -45,13 +47,17 @@ class ChemiaState extends State<Chemia> {
                 onPressed: () => Navigator.pop(context),
               ),
             ),
-
+       
             // Centered CustomCards
             Center(
-              child: Row(
+              child: SingleChildScrollView(
+                scrollDirection: Axis.horizontal,
+                child: Row(
+           
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
+                  const SizedBox(width: 20),
                   // Lesson Card - Opens a video
                   CustomCard(
                     onPressed: () {
@@ -69,7 +75,8 @@ class ChemiaState extends State<Chemia> {
                     imagePath: 'assets/play_video.png',
                     backgroundColor: const Color(0xff72ddf7),
                   ),
-      CustomCard(
+                  const SizedBox(width: 20),
+                  CustomCard(
                     onPressed: () {
                       Navigator.push(
                         context,
@@ -85,7 +92,23 @@ class ChemiaState extends State<Chemia> {
                     imagePath: 'assets/lesson.png',
                     backgroundColor: const Color(0xffa8e6cf ),
                   ),
-                  // Success Story Card - Opens a PDF
+                  const SizedBox(width: 20),
+                  CustomCard(
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const  ChemiaChallengeIntro(),
+                        ),
+                      );
+                    },
+                    text: 'Chemia lab',
+                    textColor: Colors.white,
+                    imagePath: 'assets/game.png',
+                    backgroundColor: const Color(0xffFCE3A0 ),
+                  ),
+               const SizedBox(width: 20),
+                  
                   CustomCard(
                     onPressed: () {
                       Navigator.push(
@@ -104,7 +127,7 @@ class ChemiaState extends State<Chemia> {
                   ),
                 ],
               ),
-            ),
+            ),)
           ],
         ),
       ),
