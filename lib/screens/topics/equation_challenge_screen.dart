@@ -14,11 +14,11 @@ class ChemistryEquationApp extends StatelessWidget {
 
 class ChemistryEquationScreen extends StatefulWidget {
   @override
-  _ChemistryEquationScreenState createState() =>
-      _ChemistryEquationScreenState();
+  ChemistryEquationScreenState createState() =>
+      ChemistryEquationScreenState();
 }
 
-class _ChemistryEquationScreenState extends State<ChemistryEquationScreen> {
+class ChemistryEquationScreenState extends State<ChemistryEquationScreen> {
   final _coController = TextEditingController();
   final _chController = TextEditingController();
 
@@ -41,7 +41,7 @@ class _ChemistryEquationScreenState extends State<ChemistryEquationScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
           image: DecorationImage(
             image: AssetImage("assets/black_board.jpg"), // Replace with your background path
             fit: BoxFit.cover,

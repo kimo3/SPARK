@@ -76,7 +76,7 @@ class ArchiTechState extends State<ArchiTech> {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) =>  PdfViewerScreen(pdfUrl: 'https://drive.google.com/uc?export=download&id=1NWTvRVZQeDLiAZWwqoVsI44YT94qiZ3b')
+                          builder: (context) =>  const PdfViewerScreen(pdfUrl: 'https://drive.google.com/uc?export=download&id=1NWTvRVZQeDLiAZWwqoVsI44YT94qiZ3b')
                         ),
                       );
                     },

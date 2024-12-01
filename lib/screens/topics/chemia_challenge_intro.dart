@@ -1,8 +1,8 @@
 
 import 'package:flutter/material.dart';
-import 'package:spark/screens/topics/equation_challenge_screen.dart';
+import 'package:spark/screens/topics/chemistry_lab_screen.dart';
 import 'package:spark/widgets/custom_button.dart';
-import 'package:spark/widgets/login.dart';
+
 
 class ChemiaChallengeIntro extends StatelessWidget {
   const ChemiaChallengeIntro({Key? key}) : super(key: key);
@@ -15,7 +15,7 @@ class ChemiaChallengeIntro extends StatelessWidget {
         child: Container(
           padding: const EdgeInsets.all(16),
           decoration: BoxDecoration(
-            color: Color(0xffDDFFF7), 
+            color: const Color(0xffDDFFF7), 
            
             border: Border.all(color: Colors.black26),
           ),
@@ -34,15 +34,15 @@ class ChemiaChallengeIntro extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     // Logo or Header
-                    Row(
+                    const Row(
                       children: [
                         // Logo Placeholder
                         CircleAvatar(
                           backgroundImage: AssetImage('assets/logo.png'), // Path to the logo image
                           radius: 16,
                         ),
-                        const SizedBox(width: 8),
-                        const Text(
+                         SizedBox(width: 8),
+                         Text(
                           'SPARK Labs',
                           style: TextStyle(
                             fontWeight: FontWeight.bold,
@@ -53,7 +53,7 @@ class ChemiaChallengeIntro extends StatelessWidget {
                     ),
                     const SizedBox(height: 8),
                     // Profile Image
-                    Center(
+                    const Center(
                       child: CircleAvatar(
                         backgroundImage:
                             AssetImage('assets/dr_proton.png'), // Path to Dr. Proton's image
@@ -112,7 +112,7 @@ class ChemiaChallengeIntro extends StatelessWidget {
                       onPressed: () {
                         Navigator.push(
                           context,
-                          MaterialPageRoute(builder: (context) =>   ChemistryEquationScreen()),
+                          MaterialPageRoute(builder: (context) =>  const  ChemistryLabWidget()),
                         );
                       },
                     ),

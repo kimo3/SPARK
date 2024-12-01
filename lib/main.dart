@@ -25,7 +25,7 @@ class Spark extends StatelessWidget {
   const Spark({super.key});
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return  const MaterialApp(
       home: OnBoardScreen(),
     );
   }

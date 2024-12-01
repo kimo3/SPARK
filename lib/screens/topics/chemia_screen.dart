@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:spark/screens/topics/chemia_challenge_intro.dart';
-import 'package:spark/screens/topics/equation_challenge_screen.dart';
 import 'package:spark/widgets/card.dart';
 import 'package:spark/widgets/pdf_view_screen.dart';
 import 'package:spark/widgets/video_player_screen.dart';
