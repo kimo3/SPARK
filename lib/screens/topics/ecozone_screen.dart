@@ -19,10 +19,22 @@ class EcoZoneState extends State<EcoZone> {
     SystemChrome.setPreferredOrientations([DeviceOrientation.landscapeRight, DeviceOrientation.landscapeLeft]);
   }
 
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      extendBodyBehindAppBar: true,
+      appBar: AppBar(
+        backgroundColor: Colors.transparent, // Make the app bar background transparent
+        elevation: 0, // Remove the shadow of the app bar
+        leading: IconButton(
+          icon: const Icon(
+            Icons.arrow_back,
+            color: Colors.white,
+            size: 30,
+          ),
+          onPressed: () => Navigator.pop(context),
+        ),
+      ),
       body: Container(
         decoration: const BoxDecoration(
           image: DecorationImage(
@@ -32,20 +44,6 @@ class EcoZoneState extends State<EcoZone> {
         ),
         child: Stack(
           children: [
-            // Back button
-            Positioned(
-              top: 40,
-              left: 10,
-              child: IconButton(
-                icon: const Icon(
-                  Icons.arrow_back,
-                  color: Color.fromARGB(255, 255, 255, 255),
-                  size: 40,
-                ),
-                onPressed: () => Navigator.pop(context),
-              ),
-            ),
-
             // Centered CustomCards
             Center(
               child: Row(

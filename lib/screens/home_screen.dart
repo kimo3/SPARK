@@ -19,24 +19,13 @@ class HomeState extends State<HomeScreen> {
       body: Container(
         decoration: const BoxDecoration(
           image: DecorationImage(
-            image: AssetImage('assets/space_background.jpg'),
+              image: AssetImage('assets/space_background.jpg'),
             fit: BoxFit.cover,
           ),
         ),
         child: Stack(
           children: [
-            Positioned(
-              top: 40,
-              left: 10,
-              child: IconButton(
-                icon: const Icon(
-                  Icons.arrow_back,
-                  color: Color.fromARGB(255, 255, 255, 255),
-                  size: 40,
-                ),
-                onPressed: () => Navigator.pop(context),
-              ),
-            ),
+            
              Center(
               child:Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,

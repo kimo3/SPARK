@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:spark/screens/intro_screen.dart';
+import 'package:spark/screens/help_info_screen.dart';
 import 'package:spark/widgets/custom_button.dart';
 import 'package:spark/widgets/planets_widget.dart';
 
@@ -82,16 +82,16 @@ class SettingsState extends State<Settings> {
                   onPressed: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) =>  const IntroScreen()),
+                      MaterialPageRoute(builder: (context) =>   HelpInfoPage()),
                     );
                   },
                   imgHeight: 50,
-                  imgPath: 'assets/parental_control.png',
+                  imgPath: 'assets/help.png',
                   vertical: 25,
                   horizontal: 25,
                 ),
                 const Text(
-                  'Log out',
+                  'Help',
                   style: TextStyle(
                     fontFamily: 'sparkFont',
                     color: Color.fromARGB(255, 0, 0, 0),

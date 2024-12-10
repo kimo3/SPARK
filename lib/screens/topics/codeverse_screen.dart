@@ -8,7 +8,7 @@ class CodeVerse extends StatefulWidget {
   const CodeVerse({Key? key}) : super(key: key);
 
   @override
- CodeVerseState createState() => CodeVerseState();
+  CodeVerseState createState() => CodeVerseState();
 }
 
 class CodeVerseState extends State<CodeVerse> {
@@ -19,10 +19,22 @@ class CodeVerseState extends State<CodeVerse> {
     SystemChrome.setPreferredOrientations([DeviceOrientation.landscapeRight, DeviceOrientation.landscapeLeft]);
   }
 
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      extendBodyBehindAppBar: true,
+      appBar: AppBar(
+        backgroundColor: Colors.transparent, // Make the app bar background transparent
+        elevation: 0, // Remove the shadow of the app bar
+        leading: IconButton(
+          icon: const Icon(
+            Icons.arrow_back,
+            color: Colors.white,
+            size: 30,
+          ),
+          onPressed: () => Navigator.pop(context),
+        ),
+      ),
       body: Container(
         decoration: const BoxDecoration(
           image: DecorationImage(
@@ -32,20 +44,6 @@ class CodeVerseState extends State<CodeVerse> {
         ),
         child: Stack(
           children: [
-            // Back button
-            Positioned(
-              top: 40,
-              left: 10,
-              child: IconButton(
-                icon: const Icon(
-                  Icons.arrow_back,
-                  color: Color.fromARGB(255, 255, 255, 255),
-                  size: 40,
-                ),
-                onPressed: () => Navigator.pop(context),
-              ),
-            ),
-
             // Centered CustomCards
             Center(
               child: Row(
@@ -69,7 +67,7 @@ class CodeVerseState extends State<CodeVerse> {
                     imagePath: 'assets/play_video.png',
                     backgroundColor: const Color(0xff72ddf7),
                   ),
-CustomCard(
+                  CustomCard(
                     onPressed: () {
                       Navigator.push(
                         context,
@@ -83,7 +81,7 @@ CustomCard(
                     text: 'Lesson 2',
                     textColor: Colors.white,
                     imagePath: 'assets/lesson.png',
-                    backgroundColor: const Color(0xffa8e6cf ),
+                    backgroundColor: const Color(0xffa8e6cf),
                   ),
                   // Success Story Card - Opens a PDF
                   CustomCard(
